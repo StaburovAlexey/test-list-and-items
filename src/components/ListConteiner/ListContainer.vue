@@ -1,21 +1,23 @@
 <template>
   <div class="main__block lists">
-    <ListAcordion></ListAcordion>
-    <ListAcordion></ListAcordion>
-    <ListAcordion></ListAcordion>
-    <ListAcordion></ListAcordion>
-    <ListAcordion></ListAcordion>
+    <ListAcordion
+      v-for="(item, index) in lists"
+      :key="item.title"
+      :title="item.title"
+      :checked="item.checked"
+      :items="item.items"
+    ></ListAcordion>
   </div>
 </template>
 
 <script>
 import ListAcordion from "./ListAcordion.vue";
 import ListItem from "./ListItem.vue";
+import { mapState } from "vuex";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     ListItem,
@@ -30,6 +32,9 @@ export default {
         parentLists.classList.toggle("active");
       });
     });
+  },
+  computed: {
+    ...mapState(["lists"]),
   },
 };
 </script>

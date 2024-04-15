@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ListContainer from "./components/ListContainer.vue";
-import ItemContainer from "./components/ItemContainer.vue";
+import ListContainer from "./components/ListConteiner/ListContainer.vue";
+import ItemContainer from "./components/ItemConteiner/ItemContainer.vue";
 
 export default {
   components: {

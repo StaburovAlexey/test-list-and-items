@@ -70,7 +70,7 @@
         <ColorBox></ColorBox>
       </div>
       <div class="items__cubes-line">
-        <ColorBox style="background-color: aqua;"></ColorBox>
+        <ColorBox style="background-color: aqua"></ColorBox>
         <ColorBox></ColorBox>
         <ColorBox></ColorBox>
         <ColorBox></ColorBox>
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import ColorBox from "./ColorBox.vue";
+import ColorBox from "@/components/ColorBox.vue";
 
 export default {
   components: {
