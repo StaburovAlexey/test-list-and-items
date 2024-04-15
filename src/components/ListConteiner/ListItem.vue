@@ -1,8 +1,7 @@
 <template>
   <li class="lists__item">
-    <input type="checkbox" name="" id="" />
+    <input type="checkbox" name="" id="" v-model="checkedModel" />
     <p>{{ name }}</p>
-    <p>{{ colorModel }}</p>
     <input type="text" v-model="quanityModel" />
     <input
       type="color"
@@ -27,13 +26,14 @@ export default {
       type: Boolean,
     },
     quanity: {
-      type: Text,
+      type: Number,
     },
   },
   data() {
     return {
       quanityModel: this.quanity,
-      colorModel: "",
+      colorModel: this.color,
+      checkedModel: this.checked,
     };
   },
   computed() {},
