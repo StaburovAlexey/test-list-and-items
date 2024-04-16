@@ -36,6 +36,7 @@ export default {
   methods: {
     delBox() {
       this.$store.commit("countQuanity", {
+        quanity: this.quanity,
         index: this.index,
         indexList: this.indexList,
       });

@@ -1,33 +1,16 @@
 <template>
   <li class="lists__item">
-    <input
-      type="checkbox"
-      name=""
-      id=""
-      :checked="checked"
-      v-model="checkedModel"
-      @change="updateChecked"
-    />
+    <input type="checkbox" :checked="checked" v-model="checkedModel" />
+
     <p>{{ name }}</p>
-    <input
-      type="number"
-      v-model="quanityModel"
-      @change="updateQuanity"
-      min="0"
-    />
-    <input
-      type="color"
-      name=""
-      id=""
-      class="input-color"
-      v-model="colorModel"
-      @change="updateColor"
-    />
+    <input type="number" v-model="quanityModel" min="0" max="100" />
+    <input type="color" class="input-color" v-model="colorModel" />
   </li>
 </template>
 
 <script>
 export default {
+  components: {},
   methods: {
     updateQuanity() {
       this.$store.commit("changeQuanity", {
@@ -90,6 +73,15 @@ export default {
   watch: {
     checked() {
       this.updateCheckedList();
+    },
+    quanityModel() {
+      this.updateQuanity();
+    },
+    colorModel() {
+      this.updateColor();
+    },
+    checkedModel() {
+      this.updateChecked();
     },
   },
 };
