@@ -104,6 +104,18 @@ export default createStore({
       );
       state.randomBoxes = newArray.sort(() => Math.random() - 0.5);
     },
+    randomBox(state, { indexList }) {
+      const allBoxes = state.lists[indexList].items
+        .filter((box) => box.checked === true)
+        .map((box) => ({
+          quanity: box.quanity,
+          color: box.color,
+        }));
+      const newArray = allBoxes.flatMap((obj) =>
+        Array.from({ length: obj.quanity }, () => ({ color: obj.color }))
+      );
+      state.randomBoxes = newArray.sort(() => Math.random() - 0.5);
+    },
   },
   actions: {},
   modules: {},
