@@ -2,13 +2,15 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    randomBoxes: [],
+    checkedCustom: false,
     lists: [
       {
         title: "List 1",
-        checked: true,
+        checked: false,
+        randomBoxes: [],
+        checkedCustom: false,
         items: [
-          { name: "Item 1", color: "#367c1d", checked: true, quanity: 3 },
+          { name: "Item 1", color: "#367c1d", checked: false, quanity: 3 },
           { name: "Item 2", color: "#425c1f", checked: false, quanity: 2 },
           { name: "Item 3", color: "#288c1f", checked: false, quanity: 30 },
           { name: "Item 4", color: "#135c1f", checked: false, quanity: 5 },
@@ -17,6 +19,8 @@ export default createStore({
       {
         title: "List 2",
         checked: false,
+        randomBoxes: [],
+        checkedCustom: false,
         items: [
           { name: "Item 1", color: "#E93323", checked: false, quanity: 2 },
           { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
@@ -27,6 +31,8 @@ export default createStore({
       {
         title: "List 3",
         checked: false,
+        randomBoxes: [],
+        checkedCustom: false,
         items: [
           { name: "Item 1", color: "#E93323", checked: false, quanity: 0 },
           { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
@@ -37,6 +43,8 @@ export default createStore({
       {
         title: "List 4",
         checked: false,
+        randomBoxes: [],
+        checkedCustom: false,
         items: [
           { name: "Item 1", color: "#E93323", checked: false, quanity: 0 },
           { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
@@ -47,6 +55,8 @@ export default createStore({
       {
         title: "List 5",
         checked: false,
+        randomBoxes: [],
+        checkedCustom: false,
         items: [
           { name: "Item 1", color: "#E93323", checked: false, quanity: 0 },
           { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
@@ -71,10 +81,16 @@ export default createStore({
         (item) => item.checked
       );
       const hasTrue = itemCheckedList.includes(true);
-      if (hasTrue) {
+      const allTrue = itemCheckedList.every((checked) => checked === true);
+      if (hasTrue && !allTrue) {
         state.lists[indexList].checked = true;
-      } else {
+        state.lists[indexList].checkedCustom = true;
+      } else if (allTrue) {
+        state.lists[indexList].checked = true;
+        state.lists[indexList].checkedCustom = false;
+      } else if (!allTrue) {
         state.lists[indexList].checked = false;
+        state.lists[indexList].checkedCustom = false;
       }
     },
     activeAllChecked(state, { indexList }) {
@@ -102,19 +118,9 @@ export default createStore({
       const newArray = allBoxes.flatMap((obj) =>
         Array.from({ length: obj.quanity }, () => ({ color: obj.color }))
       );
-      state.randomBoxes = newArray.sort(() => Math.random() - 0.5);
-    },
-    randomBox(state, { indexList }) {
-      const allBoxes = state.lists[indexList].items
-        .filter((box) => box.checked === true)
-        .map((box) => ({
-          quanity: box.quanity,
-          color: box.color,
-        }));
-      const newArray = allBoxes.flatMap((obj) =>
-        Array.from({ length: obj.quanity }, () => ({ color: obj.color }))
+      state.lists[indexList].randomBoxes = newArray.sort(
+        () => Math.random() - 0.5
       );
-      state.randomBoxes = newArray.sort(() => Math.random() - 0.5);
     },
   },
   actions: {},

@@ -1,7 +1,11 @@
 <template>
   <li class="lists__item">
-    <input type="checkbox" :checked="checked" v-model="checkedModel" />
-
+    <input
+      type="checkbox"
+      :checked="checked"
+      v-model="checkedModel"
+      @input="updateChecked()"
+    />
     <p>{{ name }}</p>
     <input type="number" v-model="quanityModel" min="0" max="100" />
     <input type="color" class="input-color" v-model="colorModel" />
@@ -9,8 +13,6 @@
 </template>
 
 <script>
-
-
 export default {
   components: {},
   methods: {
@@ -34,6 +36,7 @@ export default {
         index: this.index,
         indexList: this.indexList,
       });
+      this.updateCheckedList();
     },
     updateCheckedList() {
       this.$store.commit("changeCheckedList", {

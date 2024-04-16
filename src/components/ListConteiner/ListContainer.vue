@@ -7,13 +7,13 @@
       :checked="item.checked"
       :items="item.items"
       :indexList="index"
+      :checkedCustom="item.checkedCustom"
     ></ListAcordion>
   </div>
 </template>
 
 <script>
 import ListAcordion from "./ListAcordion.vue";
-import ListItem from "./ListItem.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -21,7 +21,6 @@ export default {
     return {};
   },
   components: {
-    ListItem,
     ListAcordion,
   },
   mounted() {

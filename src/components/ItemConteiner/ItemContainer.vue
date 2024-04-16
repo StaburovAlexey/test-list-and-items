@@ -7,6 +7,7 @@
       :checked="list.checked"
       :items="list.items"
       :indexList="index"
+      :randomBoxes="list.randomBoxes"
     />
   </div>
 </template>
