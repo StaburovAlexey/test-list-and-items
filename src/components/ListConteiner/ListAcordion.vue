@@ -1,10 +1,12 @@
 <template>
   <form class="lists__content-box" ref="lists">
     <div class="lists__content-label">
+      <label for="checkbox" class="checkbox-label"></label>
       <input
+        class="checkbox"
         type="checkbox"
         name=""
-        id=""
+        id="checkbox"
         @click.stop
         :checked="checked"
         @click="updateCheckedAllList()"

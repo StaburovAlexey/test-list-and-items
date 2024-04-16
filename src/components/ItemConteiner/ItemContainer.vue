@@ -1,11 +1,12 @@
 <template>
   <div class="main__block items">
     <ItemBlock
-      v-for="(item, index) in lists"
-      :key="item.title"
-      :title="item.title"
-      :checked="item.checked"
-      :items="item.items"
+      v-for="(list, index) in lists"
+      :key="list.title"
+      :title="list.title"
+      :checked="list.checked"
+      :items="list.items"
+      :indexList="index"
     />
   </div>
 </template>

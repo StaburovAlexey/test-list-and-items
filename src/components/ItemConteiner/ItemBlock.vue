@@ -5,24 +5,22 @@
       <button class="items__container-btn">Перемешать</button>
     </div>
     <div class="items__cubes">
-      <div
-        class="items__cubes-line"
+      <ItemBlockLines
         v-for="(item, index) in items"
         :key="item.name"
-      >
-        <ColorBox
-          :color="item.color"
-          :checked="item.checked"
-          v-for="box in item.quanity"
-          :key="box"
-        ></ColorBox>
-      </div>
+        :color="item.color"
+        :checked="item.checked"
+        :quanity="item.quanity"
+        :index="index"
+        :indexList="indexList"
+      ></ItemBlockLines>
     </div>
   </div>
 </template>
 
 <script>
 import ColorBox from "@/components/ColorBox.vue";
+import ItemBlockLines from "./ItemBlockLines.vue";
 
 export default {
   props: {
@@ -37,9 +35,13 @@ export default {
     title: {
       type: String,
     },
+    indexList: {
+      type: Number,
+    },
   },
   components: {
     ColorBox,
+    ItemBlockLines,
   },
 };
 </script>

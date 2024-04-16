@@ -66,7 +66,7 @@ export default createStore({
     changeChecked(state, { checked, index, indexList }) {
       state.lists[indexList].items[index].checked = checked;
     },
-    changeCheckedList(state, { checked, indexList }) {
+    changeCheckedList(state, { indexList }) {
       const itemCheckedList = state.lists[indexList].items.map(
         (item) => item.checked
       );
@@ -88,6 +88,9 @@ export default createStore({
           item.checked = true;
         });
       }
+    },
+    countQuanity(state, { index, indexList }) {
+      state.lists[indexList].items[index].quanity--;
     },
   },
   actions: {},
