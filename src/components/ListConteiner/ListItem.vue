@@ -8,6 +8,7 @@
       v-model="checkedModel"
       @change="updateChecked"
     />
+    
     <p>{{ name }}</p>
     <input
       type="number"
@@ -27,7 +28,12 @@
 </template>
 
 <script>
+
+
 export default {
+  components: {
+   
+  },
   methods: {
     updateQuanity() {
       this.$store.commit("changeQuanity", {
