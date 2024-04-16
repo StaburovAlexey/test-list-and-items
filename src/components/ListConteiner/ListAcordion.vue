@@ -8,7 +8,10 @@
     <ul class="lists__content">
       <ListItem
         v-for="(item, index) in items"
-        :key="item.title"
+        :key="index"
+        :index="index"
+        :indexList="indexList"
+        :title="title"
         :name="item.name"
         :color="item.color"
         :checked="item.checked"
@@ -25,14 +28,15 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [],
     },
     title: {
       type: String,
     },
     checked: {
       type: Boolean,
-      default: false,
+    },
+    indexList: {
+      type: Number,
     },
   },
   components: {

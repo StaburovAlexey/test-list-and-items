@@ -17,46 +17,70 @@ export default createStore({
         title: "List 2",
         checked: false,
         items: [
-          { name: "Item 1", color: "", checked: false, quanity: "" },
-          { name: "Item 2", color: "", checked: false, quanity: "" },
-          { name: "Item 3", color: "", checked: false, quanity: "" },
-          { name: "Item 4", color: "", checked: false, quanity: "" },
+          { name: "Item 1", color: "#E93323", checked: false, quanity: 2 },
+          { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 3", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 4", color: "#E93323", checked: false, quanity: 0 },
         ],
       },
       {
         title: "List 3",
         checked: false,
         items: [
-          { name: "Item 1", color: "", checked: false, quanity: "" },
-          { name: "Item 2", color: "", checked: false, quanity: "" },
-          { name: "Item 3", color: "", checked: false, quanity: "" },
-          { name: "Item 4", color: "", checked: false, quanity: "" },
+          { name: "Item 1", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 3", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 4", color: "#E93323", checked: false, quanity: 0 },
         ],
       },
       {
         title: "List 4",
         checked: false,
         items: [
-          { name: "Item 1", color: "", checked: false, quanity: "" },
-          { name: "Item 2", color: "", checked: false, quanity: "" },
-          { name: "Item 3", color: "", checked: false, quanity: "" },
-          { name: "Item 4", color: "", checked: false, quanity: "" },
+          { name: "Item 1", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 3", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 4", color: "#E93323", checked: false, quanity: 0 },
         ],
       },
       {
         title: "List 5",
         checked: false,
         items: [
-          { name: "Item 1", color: "", checked: false, quanity: "" },
-          { name: "Item 2", color: "", checked: false, quanity: "" },
-          { name: "Item 3", color: "", checked: false, quanity: "" },
-          { name: "Item 4", color: "", checked: false, quanity: "" },
+          { name: "Item 1", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 2", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 3", color: "#E93323", checked: false, quanity: 0 },
+          { name: "Item 4", color: "#E93323", checked: false, quanity: 0 },
         ],
       },
     ],
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    changeQuanity(state, { quanity, index, indexList }) {
+      state.lists[indexList].items[index].quanity = quanity;
+    },
+    changeColor(state, { color, index, indexList }) {
+      state.lists[indexList].items[index].color = color;
+    },
+    changeChecked(state, { checked, index, indexList }) {
+      state.lists[indexList].items[index].checked = checked;
+    },
+    changeCheckedList(state, { checked, indexList }) {
+      const itemCheckedList = state.lists[indexList].items.map(
+        (item) => item.checked
+      );
+      const hasTrue = itemCheckedList.includes(true);
+      if (hasTrue) {
+        state.lists[indexList].checked = true;
+      } else {
+        state.lists[indexList].checked = false;
+      }
+    },
+    activeAllChecked(state,{indexList}){
+      
+    }
+  },
   actions: {},
   modules: {},
 });

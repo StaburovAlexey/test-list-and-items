@@ -6,6 +6,7 @@
       :title="item.title"
       :checked="item.checked"
       :items="item.items"
+      :indexList="index"
     ></ListAcordion>
   </div>
 </template>
