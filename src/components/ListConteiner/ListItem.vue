@@ -4,6 +4,7 @@
       type="checkbox"
       name=""
       id=""
+      :checked="checked"
       v-model="checkedModel"
       @change="updateChecked"
     />
@@ -54,7 +55,6 @@ export default {
         indexList: this.indexList,
       });
     },
-    
   },
   props: {
     name: {

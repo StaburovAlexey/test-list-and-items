@@ -77,9 +77,18 @@ export default createStore({
         state.lists[indexList].checked = false;
       }
     },
-    activeAllChecked(state,{indexList}){
-      
-    }
+    activeAllChecked(state, { indexList }) {
+      const hasTrue = state.lists[indexList].checked;
+      if (hasTrue) {
+        state.lists[indexList].items.forEach((item) => {
+          item.checked = false;
+        });
+      } else {
+        state.lists[indexList].items.forEach((item) => {
+          item.checked = true;
+        });
+      }
+    },
   },
   actions: {},
   modules: {},

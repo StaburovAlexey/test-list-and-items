@@ -1,9 +1,14 @@
 <template>
   <form class="lists__content-box" ref="lists">
     <div class="lists__content-label">
-      <input type="checkbox" name="" id="" @click.stop :checked="checked" />{{
-        title
-      }}
+      <input
+        type="checkbox"
+        name=""
+        id=""
+        @click.stop
+        :checked="checked"
+        @click="updateCheckedAllList()"
+      />{{ title }}
     </div>
     <ul class="lists__content">
       <ListItem
@@ -41,6 +46,13 @@ export default {
   },
   components: {
     ListItem,
+  },
+  methods: {
+    updateCheckedAllList() {
+      this.$store.commit("activeAllChecked", {
+        indexList: this.indexList,
+      });
+    },
   },
 };
 </script>
